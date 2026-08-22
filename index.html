@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FastROI — Apps e soluções sob medida para o seu negócio</title>
+<meta name="description" content="Desenvolvemos apps e sistemas sob medida com foco em retorno rápido: da ideia ao app funcionando no seu bolso, sem enrolação." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
+<style>
+  :root {
+    --bg: #0b0f14;
+    --bg-elev: #121821;
+    --bg-card: #161d29;
+    --border: #232c3b;
+    --text: #eef2f7;
+    --text-dim: #9aa7b8;
+    --accent: #3ddc84;
+    --accent-dim: #2bb56a;
+    --accent-soft: rgba(61, 220, 132, 0.12);
+    --whatsapp: #25d366;
+    --radius: 14px;
+    --max-w: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  img, svg { max-width: 100%; display: block; }
+  .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+  .container { width: 100%; overflow-x: hidden; }
+
+  /* Header */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(11, 15, 20, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  header .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+  .logo .bolt {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: var(--accent-soft);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent);
+    font-size: 1rem;
+  }
+  nav.desktop-nav { display: flex; gap: 28px; align-items: center; }
+  nav.desktop-nav a {
+    text-decoration: none;
+    color: var(--text-dim);
+    font-size: 0.94rem;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+  nav.desktop-nav a:hover { color: var(--text); }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+    white-space: nowrap;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary {
+    background: var(--accent);
+    color: #06170e;
+  }
+  .btn-primary:hover { background: var(--accent-dim); box-shadow: 0 0 0 4px var(--accent-soft); }
+  .btn-whatsapp {
+    background: var(--whatsapp);
+    color: #06170e;
+  }
+  .btn-whatsapp:hover { filter: brightness(1.08); }
+  .btn-ghost {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--text);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Hero */
+  .hero {
+    padding: 90px 0 70px;
+    position: relative;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(600px 300px at 15% 0%, rgba(61,220,132,0.10), transparent 60%),
+      radial-gradient(500px 300px at 85% 20%, rgba(61,220,132,0.06), transparent 60%);
+    pointer-events: none;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid rgba(61,220,132,0.25);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
+  h1 {
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+    margin: 0 0 20px;
+    max-width: 780px;
+  }
+  h1 .accent { color: var(--accent); }
+  .hero-sub {
+    font-size: clamp(1.02rem, 1.6vw, 1.2rem);
+    color: var(--text-dim);
+    max-width: 620px;
+    margin: 0 0 34px;
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 46px; }
+  .btn-lg { padding: 15px 28px; font-size: 1rem; }
+
+  .trust-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    border-top: 1px solid var(--border);
+    padding-top: 26px;
+  }
+  .trust-row span { display: flex; align-items: center; gap: 8px; }
+  .trust-row .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+  /* Section shared */
+  section { padding: 76px 0; }
+  .section-head { max-width: 640px; margin-bottom: 48px; }
+  .section-tag {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+  h2 {
+    font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0 0 14px;
+  }
+  .section-sub { color: var(--text-dim); font-size: 1.02rem; }
+
+  /* Como funciona */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .step {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 26px 22px;
+    position: relative;
+  }
+  .step-num {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--accent);
+    background: var(--accent-soft);
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+  }
+  .step h3 { font-size: 1.02rem; margin: 0 0 8px; font-weight: 700; }
+  .step p { color: var(--text-dim); font-size: 0.9rem; margin: 0; }
+
+  /* Serviços */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .service-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .service-card:hover { border-color: rgba(61,220,132,0.35); transform: translateY(-2px); }
+  .service-icon {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 18px;
+  }
+  .service-card h3 { font-size: 1.05rem; margin: 0 0 10px; font-weight: 700; }
+  .service-card p { color: var(--text-dim); font-size: 0.9rem; margin: 0; }
+
+  /* Por que FastROI */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .why-list { display: flex; flex-direction: column; gap: 22px; }
+  .why-item { display: flex; gap: 16px; }
+  .why-check {
+    flex-shrink: 0;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    margin-top: 2px;
+  }
+  .why-item h4 { margin: 0 0 6px; font-size: 1rem; font-weight: 700; }
+  .why-item p { margin: 0; color: var(--text-dim); font-size: 0.9rem; }
+
+  .stack-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+  }
+  .stack-card h4 {
+    margin: 0 0 18px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-dim);
+    font-weight: 700;
+  }
+  .stack-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 0.84rem;
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+
+  /* CTA / Contato */
+  .contact-section {
+    background: var(--bg-elev);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+  }
+  .contact-info h2 { margin-bottom: 16px; }
+  .contact-info p { color: var(--text-dim); margin-bottom: 28px; }
+  .contact-methods { display: flex; flex-direction: column; gap: 14px; }
+  .contact-method {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.15s;
+  }
+  .contact-method:hover { border-color: var(--accent); }
+  .contact-method .ic {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+  }
+  .ic.wa { background: rgba(37,211,102,0.15); color: var(--whatsapp); }
+  .ic.mail { background: var(--accent-soft); color: var(--accent); }
+  .contact-method strong { display: block; font-size: 0.95rem; }
+  .contact-method span { display: block; font-size: 0.82rem; color: var(--text-dim); }
+
+  form.contact-form {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .form-row { display: flex; flex-direction: column; gap: 6px; }
+  .form-row label { font-size: 0.85rem; font-weight: 600; color: var(--text-dim); }
+  .form-row input, .form-row textarea, .form-row select {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-size: 0.95rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .form-row input:focus, .form-row textarea:focus, .form-row select:focus { border-color: var(--accent); }
+  .form-row textarea { resize: vertical; min-height: 100px; }
+  .form-hint { font-size: 0.78rem; color: var(--text-dim); margin-top: -4px; }
+  form.contact-form .btn { justify-content: center; margin-top: 6px; }
+
+  /* Footer */
+  footer { padding: 40px 0; }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    padding-top: 28px;
+  }
+  .footer-logo { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--text); }
+
+  /* WhatsApp floating button */
+  .wa-float {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    z-index: 60;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: var(--whatsapp);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+    text-decoration: none;
+    font-size: 1.6rem;
+    transition: transform 0.15s;
+  }
+  .wa-float:hover { transform: scale(1.07); }
+
+  .hamburger { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+  @media (max-width: 860px) {
+    nav.desktop-nav { display: none; }
+    .hamburger { display: block; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    section { padding: 56px 0; }
+    .hero { padding: 60px 0 40px; }
+  }
+  @media (max-width: 520px) {
+    .steps { grid-template-columns: 1fr; }
+    .hero-ctas .btn { width: 100%; justify-content: center; }
+    .hero-ctas { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="wrap">
+      <a href="#top" class="logo">
+        <span class="bolt">⚡</span>
+        FastROI
+      </a>
+      <nav class="desktop-nav">
+        <a href="#servicos">Serviços</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#por-que">Por que a FastROI</a>
+        <a href="#contato" class="btn btn-primary">Falar agora</a>
+      </nav>
+      <button class="hamburger" aria-label="menu">☰</button>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero-bg"></div>
+    <div class="wrap">
+      <span class="eyebrow">🚀 Estúdio de apps e software sob medida</span>
+      <h1>Sua empresa precisa de um app. <span class="accent">Nós entregamos com ROI rápido.</span></h1>
+      <p class="hero-sub">
+        Transformamos a ideia do seu negócio em um aplicativo funcionando de verdade — com chat em tempo real,
+        notificações, pagamentos e integração com o que você já usa. Sem enrolação, sem contrato eterno.
+      </p>
+      <div class="hero-ctas">
+        <a class="btn btn-whatsapp btn-lg" href="https://wa.me/5541999047326?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20desenvolver%20um%20app%20com%20a%20FastROI." target="_blank" rel="noopener">
+          💬 Chamar no WhatsApp
+        </a>
+        <a class="btn btn-ghost btn-lg" href="#contato">Ver formulário de contato</a>
+      </div>
+      <div class="trust-row">
+        <span><span class="dot"></span> Apps já em produção com usuários reais</span>
+        <span><span class="dot"></span> Chat, push notification e pagamento integrados</span>
+        <span><span class="dot"></span> Do MVP ao app publicado na loja</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-tag">Como funciona</div>
+        <h2>Da conversa ao app no seu bolso</h2>
+        <p class="section-sub">Processo direto, pensado pra pequenas e médias empresas que não têm tempo (nem paciência) pra projeto eterno de software.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Diagnóstico rápido</h3>
+          <p>Entendemos o problema real do seu negócio e definimos o escopo mínimo que já gera resultado.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Proposta objetiva</h3>
+          <p>Prazo, escopo e valor fechado — sem letra miúda, sem hora extra escondida.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Construção</h3>
+          <p>Desenvolvemos com entregas visíveis no caminho, não só no fim do projeto.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h3>App no ar</h3>
+          <p>Publicação, suporte inicial e o app rodando de verdade com seus clientes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-tag">O que fazemos</div>
+        <h2>Soluções sob medida, não templates genéricos</h2>
+        <p class="section-sub">Cada negócio tem um jeito próprio de operar — construímos em cima disso, não o contrário.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">📱</div>
+          <h3>Apps mobile</h3>
+          <p>Aplicativos nativos (iOS/Android) com React Native/Expo — cadastro, chat, notificação push e tudo que o seu app precisa pra ser usado de verdade.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🖥️</div>
+          <h3>Painéis e sistemas web</h3>
+          <p>Dashboards administrativos, sistemas internos e ferramentas de gestão feitas pra quem opera o negócio no dia a dia.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔗</div>
+          <h3>Integrações e automações</h3>
+          <p>Conectamos seu app a pagamento, WhatsApp, notificações e outras ferramentas — automatizando o que hoje é feito na mão.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">💬</div>
+          <h3>Chat e notificação em tempo real</h3>
+          <p>Conversa em tempo real entre cliente e empresa, com push notification de verdade — não só notificação local.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🗄️</div>
+          <h3>Backend e banco de dados</h3>
+          <p>Estrutura de dados segura (Supabase/Postgres), com regras de acesso corretas desde o primeiro dia — nada de dado exposto.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">⚙️</div>
+          <h3>Manutenção e evolução</h3>
+          <p>Depois do lançamento, seguimos evoluindo o produto junto com o crescimento do seu negócio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="por-que">
+    <div class="wrap">
+      <div class="why-grid">
+        <div>
+          <div class="section-tag">Por que a FastROI</div>
+          <h2 style="margin-bottom: 28px;">Tecnologia validada em produto real, não só em teoria</h2>
+          <div class="why-list">
+            <div class="why-item">
+              <div class="why-check">✓</div>
+              <div>
+                <h4>Experiência com produto em produção</h4>
+                <p>Não é o primeiro app — já construímos e colocamos no ar apps com chat, avaliação, disputa e notificação push funcionando com usuário real.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-check">✓</div>
+              <div>
+                <h4>Foco em retorno, não em feature bonita</h4>
+                <p>Cada funcionalidade entra no escopo porque resolve um problema do seu negócio — não porque "fica legal ter".</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-check">✓</div>
+              <div>
+                <h4>Comunicação direta</h4>
+                <p>Você fala direto com quem constrói o seu app, sem camada de atendimento no meio.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-check">✓</div>
+              <div>
+                <h4>Preço justo pra pequeno e médio negócio</h4>
+                <p>Sem preço de agência grande — soluções sob medida com custo compatível com quem está começando ou crescendo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stack-card">
+          <h4>Stack que usamos</h4>
+          <div class="stack-pills">
+            <span class="pill">React Native / Expo</span>
+            <span class="pill">React</span>
+            <span class="pill">Supabase / Postgres</span>
+            <span class="pill">Edge Functions</span>
+            <span class="pill">Push Notifications (FCM)</span>
+            <span class="pill">Chat em tempo real</span>
+            <span class="pill">Integração de pagamento</span>
+            <span class="pill">Publicação na Play Store / App Store</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contato">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="section-tag">Vamos conversar</div>
+          <h2>Conte sua ideia — a resposta é rápida</h2>
+          <p>Preencha o formulário ou chame direto no WhatsApp. Sem compromisso, sem letra miúda.</p>
+          <div class="contact-methods">
+            <a class="contact-method" href="https://wa.me/5541999047326?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20desenvolver%20um%20app%20com%20a%20FastROI." target="_blank" rel="noopener">
+              <span class="ic wa">💬</span>
+              <span>
+                <strong>WhatsApp</strong>
+                <span>(41) 99904-7326 — Moza Jr</span>
+              </span>
+            </a>
+            <a class="contact-method" href="mailto:mozajr2011@gmail.com">
+              <span class="ic mail">✉️</span>
+              <span>
+                <strong>E-mail</strong>
+                <span>mozajr2011@gmail.com</span>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+          </div>
+          <div class="form-row">
+            <label for="empresa">Empresa (opcional)</label>
+            <input type="text" id="empresa" name="empresa" placeholder="Nome da sua empresa" />
+          </div>
+          <div class="form-row">
+            <label for="whatsapp">WhatsApp ou e-mail pra retorno</label>
+            <input type="text" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000 ou seu@email.com" required />
+          </div>
+          <div class="form-row">
+            <label for="mensagem">O que você precisa?</label>
+            <textarea id="mensagem" name="mensagem" placeholder="Conte um pouco sobre a ideia do app ou sistema..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+          <p class="form-hint">Ao enviar, abrimos seu app de e-mail com a mensagem pronta pra mozajr2011@gmail.com.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-row">
+        <div class="footer-logo">
+          <span class="bolt" style="width:26px;height:26px;font-size:0.85rem;">⚡</span>
+          FastROI
+        </div>
+        <span>© <span id="year"></span> FastROI. Apps e soluções sob medida.</span>
+        <a href="https://wa.me/5541999047326" target="_blank" rel="noopener" style="text-decoration:none;color:var(--accent);font-weight:600;">Fale conosco →</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<a class="wa-float" href="https://wa.me/5541999047326?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20desenvolver%20um%20app%20com%20a%20FastROI." target="_blank" rel="noopener" aria-label="WhatsApp">
+  💬
+</a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const nome = document.getElementById('nome').value.trim();
+    const empresa = document.getElementById('empresa').value.trim();
+    const contato = document.getElementById('whatsapp').value.trim();
+    const mensagem = document.getElementById('mensagem').value.trim();
+
+    const corpo = [
+      'Nome: ' + nome,
+      empresa ? 'Empresa: ' + empresa : null,
+      'Contato: ' + contato,
+      '',
+      mensagem
+    ].filter(Boolean).join('\n');
+
+    const assunto = 'Novo contato via FastROI - ' + nome;
+    const mailto = 'mailto:mozajr2011@gmail.com?subject=' + encodeURIComponent(assunto) + '&body=' + encodeURIComponent(corpo);
+    window.location.href = mailto;
+  });
+</script>
+
+</body>
+</html>
