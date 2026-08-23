@@ -440,10 +440,26 @@
   }
   .wa-float:hover { transform: scale(1.07); }
 
-  .hamburger { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+  .hamburger { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; line-height: 1; }
 
   @media (max-width: 860px) {
-    nav.desktop-nav { display: none; }
+    nav.desktop-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      background: var(--bg-elev);
+      border-bottom: 1px solid var(--border);
+      padding: 4px 24px 20px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+    }
+    nav.desktop-nav.open { display: flex; }
+    nav.desktop-nav a { padding: 14px 0; border-bottom: 1px solid var(--border); }
+    nav.desktop-nav a.btn { margin-top: 16px; justify-content: center; border-bottom: none; }
     .hamburger { display: block; }
     .steps { grid-template-columns: 1fr 1fr; }
     .services-grid { grid-template-columns: 1fr; }
@@ -471,13 +487,13 @@
           <span class="slogan">Inteligência que acelera resultados</span>
         </span>
       </a>
-      <nav class="desktop-nav">
+      <nav class="desktop-nav" id="mainNav">
         <a href="#servicos">Serviços</a>
         <a href="#como-funciona">Como funciona</a>
         <a href="#por-que">Por que a FastROI</a>
         <a href="#contato" class="btn btn-primary">Falar agora</a>
       </nav>
-      <button class="hamburger" aria-label="menu">☰</button>
+      <button class="hamburger" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">☰</button>
     </div>
   </header>
 
@@ -724,6 +740,21 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.getElementById('mainNav');
+  menuToggle.addEventListener('click', function () {
+    const isOpen = mainNav.classList.toggle('open');
+    menuToggle.textContent = isOpen ? '✕' : '☰';
+    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  mainNav.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      mainNav.classList.remove('open');
+      menuToggle.textContent = '☰';
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
 
   document.getElementById('contactForm').addEventListener('submit', function (e) {
     e.preventDefault();
