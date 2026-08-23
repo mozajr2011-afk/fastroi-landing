@@ -338,37 +338,6 @@
   }
   .pill.hl { background: var(--highlight-soft); border-color: rgba(244,104,15,0.3); color: var(--highlight); }
 
-  /* FAQ */
-  .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 760px; }
-  .faq-item {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 4px 22px;
-  }
-  .faq-item summary {
-    list-style: none;
-    cursor: pointer;
-    padding: 18px 0;
-    font-weight: 700;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-  .faq-item summary::-webkit-details-marker { display: none; }
-  .faq-item summary::after {
-    content: "+";
-    font-size: 1.3rem;
-    font-weight: 400;
-    color: var(--accent);
-    flex-shrink: 0;
-    transition: transform 0.2s;
-  }
-  .faq-item[open] summary::after { transform: rotate(45deg); }
-  .faq-item p { color: var(--text-dim); font-size: 0.92rem; margin: 0 0 20px; line-height: 1.6; }
-
   /* CTA / Contato */
   .contact-section {
     background: var(--bg-elev);
@@ -506,7 +475,6 @@
         <a href="#servicos">Serviços</a>
         <a href="#como-funciona">Como funciona</a>
         <a href="#por-que">Por que a FastROI</a>
-        <a href="#faq">FAQ</a>
         <a href="#contato" class="btn btn-primary">Falar agora</a>
       </nav>
       <button class="hamburger" aria-label="menu">☰</button>
@@ -679,38 +647,6 @@
             <span class="pill hl">Automação de processos (n8n)</span>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="section-tag hl">Perguntas frequentes</div>
-        <h2>Antes de chamar no WhatsApp</h2>
-        <p class="section-sub">As dúvidas que mais aparecem numa primeira conversa.</p>
-      </div>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>Quanto tempo leva pra ficar pronto?</summary>
-          <p>Depende do escopo, mas isso é definido junto com você antes de começar — o prazo entra na proposta fechada, não é uma estimativa solta. Projetos menores (um painel simples, uma automação) costumam sair em semanas; um app completo leva mais.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Você trabalha sozinho — isso não é um risco pro meu projeto?</summary>
-          <p>É proposital: quem conversa com você no diagnóstico é a mesma pessoa que escreve o código e testa antes de publicar, sem informação se perdendo entre camadas. Se o projeto exigir mais de uma frente ao mesmo tempo, isso já entra no prazo da proposta — prefiro um prazo realista a prometer uma rapidez que não vou cumprir.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Como funciona o pagamento?</summary>
-          <p>Valor fechado na proposta, normalmente dividido em etapas: entrada, meio do projeto e entrega final. Sem hora extra surpresa depois.</p>
-        </details>
-        <details class="faq-item">
-          <summary>E depois que o app fica pronto, quem cuida da manutenção?</summary>
-          <p>Ofereço suporte na virada pra publicação e planos de manutenção pra quem quer seguir evoluindo o produto. Não é obrigatório — o código e o acesso são seus.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Minha empresa é pequena, isso é pra mim mesmo assim?</summary>
-          <p>Sim — o orçamento é pensado exatamente pra quem está começando ou crescendo, não pro budget de uma agência grande. Se o escopo não couber no seu momento, eu falo isso na proposta em vez de empurrar um projeto maior do que você precisa.</p>
-        </details>
       </div>
     </div>
   </section>
