@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>FastROI — Apps e soluções sob medida para o seu negócio</title>
 <meta name="description" content="Desenvolvemos apps e sistemas sob medida com foco em retorno rápido: da ideia ao app funcionando no seu bolso, sem enrolação." />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
+<link rel="icon" href="fastroi-icon.png" />
 <style>
   :root {
     --bg: #0b0f14;
@@ -14,9 +14,10 @@
     --border: #232c3b;
     --text: #eef2f7;
     --text-dim: #9aa7b8;
-    --accent: #3ddc84;
-    --accent-dim: #2bb56a;
-    --accent-soft: rgba(61, 220, 132, 0.12);
+    --accent: #f4680f;
+    --accent-dim: #d3560a;
+    --accent-soft: rgba(244, 104, 15, 0.12);
+    --gray: #9098a3;
     --whatsapp: #25d366;
     --radius: 14px;
     --max-w: 1120px;
@@ -62,12 +63,9 @@
   }
   .logo .bolt {
     width: 30px; height: 30px;
-    border-radius: 8px;
-    background: var(--accent-soft);
     display: flex; align-items: center; justify-content: center;
-    color: var(--accent);
-    font-size: 1rem;
   }
+  .logo .bolt img { width: 100%; height: 100%; object-fit: contain; }
   nav.desktop-nav { display: flex; gap: 28px; align-items: center; }
   nav.desktop-nav a {
     text-decoration: none;
@@ -94,7 +92,7 @@
   .btn:active { transform: scale(0.97); }
   .btn-primary {
     background: var(--accent);
-    color: #06170e;
+    color: #fff;
   }
   .btn-primary:hover { background: var(--accent-dim); box-shadow: 0 0 0 4px var(--accent-soft); }
   .btn-whatsapp {
@@ -410,7 +408,7 @@
   <header>
     <div class="wrap">
       <a href="#top" class="logo">
-        <span class="bolt">⚡</span>
+        <span class="bolt"><img src="fastroi-icon.png" alt="FastROI" /></span>
         FastROI
       </a>
       <nav class="desktop-nav">
@@ -645,7 +643,7 @@
     <div class="wrap">
       <div class="footer-row">
         <div class="footer-logo">
-          <span class="bolt" style="width:26px;height:26px;font-size:0.85rem;">⚡</span>
+          <span class="bolt" style="width:26px;height:26px;"><img src="fastroi-icon.png" alt="FastROI" /></span>
           FastROI
         </div>
         <span>© <span id="year"></span> FastROI. Apps e soluções sob medida.</span>
