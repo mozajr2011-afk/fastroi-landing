@@ -140,6 +140,23 @@
       radial-gradient(500px 300px at 85% 20%, rgba(244,104,15,0.07), transparent 60%);
     pointer-events: none;
   }
+  .hero-watermark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+  .hero-watermark img { width: 620px; max-width: 60vw; height: auto; object-fit: contain; }
+  @media (max-width: 640px) {
+    .hero-watermark { justify-content: center; opacity: 0.06; }
+    .hero-watermark img { width: 320px; max-width: 80vw; }
+  }
   .eyebrow {
     display: inline-flex;
     align-items: center;
@@ -449,6 +466,7 @@
 
   <section class="hero" id="top">
     <div class="hero-bg"></div>
+    <div class="hero-watermark"><img src="fastroi-icon.png" alt="" /></div>
     <div class="wrap">
       <span class="eyebrow">🚀 Estúdio de apps, IA e automação sob medida</span>
       <h1>Sua empresa precisa de um app ou de automação? <span class="accent">A gente entrega com ROI rápido.</span></h1>
