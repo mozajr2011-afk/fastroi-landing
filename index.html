@@ -338,6 +338,37 @@
   }
   .pill.hl { background: var(--highlight-soft); border-color: rgba(244,104,15,0.3); color: var(--highlight); }
 
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 760px; }
+  .faq-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 4px 22px;
+  }
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 18px 0;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--accent);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { color: var(--text-dim); font-size: 0.92rem; margin: 0 0 20px; line-height: 1.6; }
+
   /* CTA / Contato */
   .contact-section {
     background: var(--bg-elev);
@@ -475,6 +506,7 @@
         <a href="#servicos">Serviços</a>
         <a href="#como-funciona">Como funciona</a>
         <a href="#por-que">Por que a FastROI</a>
+        <a href="#faq">FAQ</a>
         <a href="#contato" class="btn btn-primary">Falar agora</a>
       </nav>
       <button class="hamburger" aria-label="menu">☰</button>
@@ -485,11 +517,11 @@
     <div class="hero-bg"></div>
     <div class="hero-watermark"><img src="fastroi-icon.png" alt="" /></div>
     <div class="wrap">
-      <span class="eyebrow">🚀 Estúdio de apps, IA e automação sob medida</span>
+      <span class="eyebrow">⚡ Apps, IA e automação sob medida</span>
       <h1>Sua empresa precisa de um app ou de automação? <span class="accent">A gente entrega com ROI rápido.</span></h1>
       <p class="hero-sub">
-        A <strong>FastROI</strong> transforma a ideia do seu negócio em software funcionando de verdade — apps com chat e pagamento,
-        agentes de IA que atendem e automações que eliminam trabalho manual. Sem enrolação, sem contrato eterno.
+        A <strong>FastROI</strong> constrói apps mobile, painéis web, agentes de IA e automações que tiram tarefa manual
+        do seu caminho — com escopo e prazo fechados antes de qualquer linha de código.
       </p>
       <div class="hero-ctas">
         <a class="btn btn-whatsapp btn-lg" href="https://wa.me/5541999047326?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20desenvolver%20um%20app%20com%20a%20FastROI." target="_blank" rel="noopener">
@@ -498,9 +530,9 @@
         <a class="btn btn-ghost btn-lg" href="#contato">Ver formulário de contato</a>
       </div>
       <div class="trust-row">
-        <span><span class="dot"></span> Apps já em produção com usuários reais</span>
-        <span><span class="dot hl"></span> Agentes de IA e automação de processos</span>
-        <span><span class="dot"></span> Do MVP ao app publicado na loja</span>
+        <span><span class="dot"></span> Escopo e prazo fechados antes de começar</span>
+        <span><span class="dot hl"></span> Chat, push notification e pagamento nativos</span>
+        <span><span class="dot"></span> Você fala direto com quem constrói</span>
       </div>
     </div>
   </section>
@@ -510,28 +542,28 @@
       <div class="section-head">
         <div class="section-tag">Como funciona</div>
         <h2>Da conversa ao app no seu bolso</h2>
-        <p class="section-sub">Processo direto da FastROI, pensado pra pequenas e médias empresas que não têm tempo (nem paciência) pra projeto eterno de software.</p>
+        <p class="section-sub">Quatro etapas, sem burocracia — pensadas pra quem não tem tempo de acompanhar reunião de status toda semana.</p>
       </div>
       <div class="steps">
         <div class="step">
           <div class="step-num">01</div>
           <h3>Diagnóstico rápido</h3>
-          <p>Entendemos o problema real do seu negócio e definimos o escopo mínimo que já gera resultado.</p>
+          <p>Uma conversa objetiva pra entender o que trava seu negócio hoje e mapear o menor escopo que já resolve.</p>
         </div>
         <div class="step">
           <div class="step-num hl">02</div>
           <h3>Proposta objetiva</h3>
-          <p>Prazo, escopo e valor fechado — sem letra miúda, sem hora extra escondida.</p>
+          <p>Prazo e valor fechados antes de qualquer linha de código. Você sabe exatamente o que vai receber e quando.</p>
         </div>
         <div class="step">
           <div class="step-num">03</div>
           <h3>Construção</h3>
-          <p>Desenvolvemos com entregas visíveis no caminho, não só no fim do projeto.</p>
+          <p>Você acompanha o progresso em etapas — recebe acesso pra testar antes da entrega final, não só no fim.</p>
         </div>
         <div class="step">
           <div class="step-num">04</div>
           <h3>App no ar</h3>
-          <p>Publicação, suporte inicial e o app rodando de verdade com seus clientes.</p>
+          <p>Publicação nas lojas ou no seu domínio, mais suporte na virada pra garantir que tudo funcione com seus clientes.</p>
         </div>
       </div>
     </div>
@@ -541,54 +573,54 @@
     <div class="wrap">
       <div class="section-head">
         <div class="section-tag hl">O que fazemos</div>
-        <h2>Apps, IA e automação — sob medida, não templates genéricos</h2>
-        <p class="section-sub">Cada negócio tem um jeito próprio de operar — construímos em cima disso, não o contrário.</p>
+        <h2>O que a FastROI constrói pra você</h2>
+        <p class="section-sub">Escolha só o que resolve seu problema agora. O resto a gente adiciona quando fizer sentido pro seu negócio.</p>
       </div>
       <div class="services-grid">
         <div class="service-card">
           <div class="service-icon">📱</div>
           <h3>Apps mobile</h3>
-          <p>Aplicativos nativos (iOS/Android) com React Native/Expo — cadastro, chat, notificação push e tudo que o seu app precisa pra ser usado de verdade.</p>
+          <p>Aplicativos nativos (iOS/Android) com React Native/Expo: cadastro, chat e notificação push funcionando desde o primeiro dia.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">🖥️</div>
           <h3>Painéis e sistemas web</h3>
-          <p>Dashboards administrativos, sistemas internos e ferramentas de gestão feitas pra quem opera o negócio no dia a dia.</p>
+          <p>Dashboards administrativos e sistemas internos construídos em cima do fluxo real da sua equipe, não de um template genérico.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">🔗</div>
           <h3>Integrações e automações</h3>
-          <p>Conectamos seu app a pagamento, WhatsApp, notificações e outras ferramentas — automatizando o que hoje é feito na mão.</p>
+          <p>Conectamos seu sistema a pagamento, WhatsApp e outras ferramentas que sua operação já usa no dia a dia.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">💬</div>
           <h3>Chat e notificação em tempo real</h3>
-          <p>Conversa em tempo real entre cliente e empresa, com push notification de verdade — não só notificação local.</p>
+          <p>Conversa em tempo real entre cliente e empresa, com push notification via Firebase — a mesma tecnologia usada em apps grandes.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">🗄️</div>
           <h3>Backend e banco de dados</h3>
-          <p>Estrutura de dados segura (Supabase/Postgres), com regras de acesso corretas desde o primeiro dia — nada de dado exposto.</p>
+          <p>Estrutura de dados no Supabase/Postgres com permissões de acesso configuradas corretamente desde a primeira linha de código.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">⚙️</div>
           <h3>Manutenção e evolução</h3>
-          <p>Depois do lançamento, seguimos evoluindo o produto junto com o crescimento do seu negócio.</p>
+          <p>Acompanhamento pós-lançamento pra ajustar e evoluir o produto junto com o crescimento do seu negócio.</p>
         </div>
         <div class="service-card">
           <div class="service-icon hl">🧠</div>
           <h3>IA generativa aplicada ao negócio</h3>
-          <p>Copilotos e assistentes que usam os dados da sua empresa pra responder cliente, sugerir resposta ou gerar conteúdo — sempre com revisão antes de sair, sem risco de "robô solto".</p>
+          <p>Assistentes que usam os dados da sua empresa pra responder cliente ou gerar conteúdo, sempre com revisão humana antes de publicar.</p>
         </div>
         <div class="service-card">
           <div class="service-icon hl">🤖</div>
           <h3>Agentes de IA</h3>
-          <p>Agentes que executam tarefas reais (responder, consultar sistema, abrir chamado, qualificar lead) em vez de só conversar — conectados ao seu WhatsApp, CRM ou sistema interno.</p>
+          <p>Agentes que executam tarefa de verdade — responder, consultar sistema, qualificar lead — conectados ao seu WhatsApp, CRM ou sistema interno.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">🔁</div>
           <h3>Automação de processos</h3>
-          <p>Eliminamos tarefa manual repetitiva — planilha, cadastro, cobrança, follow-up — com workflows automatizados que rodam sozinhos e avisam quando algo precisa de você.</p>
+          <p>Planilha, cadastro, cobrança e follow-up automatizados em workflows que rodam sozinhos e avisam quando precisam de você.</p>
         </div>
       </div>
     </div>
@@ -599,34 +631,34 @@
       <div class="why-grid">
         <div>
           <div class="section-tag">Por que a FastROI</div>
-          <h2 style="margin-bottom: 28px;">Tecnologia validada em produto real, não só em teoria</h2>
+          <h2 style="margin-bottom: 28px;">Experiência real, não promessa de portfólio</h2>
           <div class="why-list">
             <div class="why-item">
               <div class="why-check">✓</div>
               <div>
-                <h4>Experiência com produto em produção</h4>
-                <p>Não é o primeiro app da FastROI — já construímos e colocamos no ar apps com chat, avaliação, disputa e notificação push funcionando com usuário real.</p>
+                <h4>Tecnologia já testada em produção</h4>
+                <p>Antes da FastROI, já construí e publiquei apps com chat, avaliação e notificação push — testados com usuário real, não só em ambiente de desenvolvimento.</p>
               </div>
             </div>
             <div class="why-item">
               <div class="why-check hl">✓</div>
               <div>
-                <h4>Foco em retorno, não em feature bonita</h4>
-                <p>Cada funcionalidade entra no escopo porque resolve um problema do seu negócio — não porque "fica legal ter".</p>
+                <h4>Escopo enxuto de propósito</h4>
+                <p>Toda funcionalidade entra porque resolve algo do seu negócio. O que não resolve fica de fora até fazer sentido.</p>
               </div>
             </div>
             <div class="why-item">
               <div class="why-check">✓</div>
               <div>
                 <h4>Comunicação direta</h4>
-                <p>Você fala direto com quem constrói o seu app, sem camada de atendimento no meio.</p>
+                <p>Sem gerente de conta, sem fila de suporte: você fala comigo do diagnóstico até o app publicado.</p>
               </div>
             </div>
             <div class="why-item">
               <div class="why-check">✓</div>
               <div>
-                <h4>Preço justo pra pequeno e médio negócio</h4>
-                <p>Sem preço de agência grande — soluções sob medida com custo compatível com quem está começando ou crescendo.</p>
+                <h4>Preço compatível com quem está começando</h4>
+                <p>Orçamento pensado pra pequeno e médio negócio, não pro budget de uma agência grande.</p>
               </div>
             </div>
           </div>
@@ -651,13 +683,45 @@
     </div>
   </section>
 
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-tag hl">Perguntas frequentes</div>
+        <h2>Antes de chamar no WhatsApp</h2>
+        <p class="section-sub">As dúvidas que mais aparecem numa primeira conversa.</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Quanto tempo leva pra ficar pronto?</summary>
+          <p>Depende do escopo, mas isso é definido junto com você antes de começar — o prazo entra na proposta fechada, não é uma estimativa solta. Projetos menores (um painel simples, uma automação) costumam sair em semanas; um app completo leva mais.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Preciso saber programar ou ter equipe técnica?</summary>
+          <p>Não. Você entra com o problema e o conhecimento do seu negócio; a parte técnica é comigo. As reuniões são em português simples, sem jargão.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Como funciona o pagamento?</summary>
+          <p>Valor fechado na proposta, combinado antes de qualquer linha de código — normalmente dividido em etapas (entrada, meio do projeto, entrega). Sem hora extra surpresa depois.</p>
+        </details>
+        <details class="faq-item">
+          <summary>E depois que o app fica pronto, quem cuida da manutenção?</summary>
+          <p>Ofereço suporte na virada pra publicação e planos de manutenção pra quem quer seguir evoluindo o produto. Não é obrigatório — o código e o acesso são seus.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Minha empresa é pequena, isso é pra mim mesmo assim?</summary>
+          <p>Sim — o orçamento é pensado exatamente pra quem está começando ou crescendo, não pro budget de uma agência grande. Se o escopo não couber no seu momento, eu falo isso na proposta em vez de empurrar um projeto maior do que você precisa.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <section class="contact-section" id="contato">
     <div class="wrap">
       <div class="contact-grid">
         <div class="contact-info">
           <div class="section-tag hl">Vamos conversar</div>
           <h2>Conte sua ideia — a resposta é rápida</h2>
-          <p>Preencha o formulário ou chame direto no WhatsApp — o time da FastROI responde rápido. Sem compromisso, sem letra miúda.</p>
+          <p>Preencha o formulário ou chame direto no WhatsApp. Sem compromisso, sem letra miúda.</p>
           <div class="contact-methods">
             <a class="contact-method" href="https://wa.me/5541999047326?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20desenvolver%20um%20app%20com%20a%20FastROI." target="_blank" rel="noopener">
               <span class="ic wa">💬</span>
