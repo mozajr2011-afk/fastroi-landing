@@ -75,17 +75,29 @@
   .logo {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-weight: 800;
-    font-size: 1.15rem;
-    letter-spacing: -0.02em;
+    gap: 10px;
     text-decoration: none;
   }
   .logo .bolt {
-    width: 30px; height: 30px;
+    width: 44px; height: 44px;
     display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
   }
   .logo .bolt img { width: 100%; height: 100%; object-fit: contain; }
+  .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .logo-text .name {
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  .logo-text .slogan {
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: var(--highlight);
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
   nav.desktop-nav { display: flex; gap: 28px; align-items: center; }
   nav.desktop-nav a {
     text-decoration: none;
@@ -454,7 +466,10 @@
     <div class="wrap">
       <a href="#top" class="logo">
         <span class="bolt"><img src="fastroi-icon.png" alt="FastROI" /></span>
-        FastROI
+        <span class="logo-text">
+          <span class="name">FastROI</span>
+          <span class="slogan">Inteligência que acelera resultados</span>
+        </span>
       </a>
       <nav class="desktop-nav">
         <a href="#servicos">Serviços</a>
@@ -689,7 +704,7 @@
     <div class="wrap">
       <div class="footer-row">
         <div class="footer-logo">
-          <span class="bolt" style="width:26px;height:26px;"><img src="fastroi-icon.png" alt="FastROI" /></span>
+          <span class="bolt" style="width:34px;height:34px;"><img src="fastroi-icon.png" alt="FastROI" /></span>
           FastROI
         </div>
         <span>© <span id="year"></span> FastROI. Apps e soluções sob medida.</span>
