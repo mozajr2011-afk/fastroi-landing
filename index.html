@@ -143,12 +143,14 @@
   .hero-watermark {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%;
+    max-width: var(--max-w);
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: flex-end;
     opacity: 0.08;
     pointer-events: none;
   }
