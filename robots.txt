@@ -22,4 +22,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://fastroi.com.br/sitemap.xml
+Sitemap: https://www.fastroi.com.br/sitemap.xml
