@@ -38,7 +38,24 @@
   a { color: inherit; }
   img, svg { max-width: 100%; display: block; }
   .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
-  .container { width: 100%; overflow-x: hidden; }
+  .container { width: 100%; overflow-x: hidden; position: relative; }
+  .container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(650px 380px at 12% 3%, rgba(37,99,235,0.13), transparent 60%),
+      radial-gradient(550px 380px at 88% 10%, rgba(244,104,15,0.08), transparent 60%),
+      radial-gradient(600px 400px at 90% 32%, rgba(37,99,235,0.09), transparent 60%),
+      radial-gradient(550px 400px at 8% 42%, rgba(244,104,15,0.07), transparent 60%),
+      radial-gradient(600px 400px at 15% 62%, rgba(37,99,235,0.09), transparent 60%),
+      radial-gradient(600px 400px at 90% 70%, rgba(244,104,15,0.07), transparent 60%),
+      radial-gradient(600px 400px at 20% 90%, rgba(37,99,235,0.08), transparent 60%),
+      radial-gradient(600px 380px at 85% 97%, rgba(244,104,15,0.07), transparent 60%);
+  }
+  .container > * { position: relative; z-index: 1; }
 
   /* Header */
   header {
@@ -165,6 +182,11 @@
   }
   .trust-row span { display: flex; align-items: center; gap: 8px; }
   .trust-row .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .trust-row .dot.hl { background: var(--highlight); }
+  .section-tag.hl { color: var(--highlight); }
+  .step-num.hl { color: var(--highlight); background: var(--highlight-soft); }
+  .service-icon.hl { color: var(--highlight); background: var(--highlight-soft); }
+  .why-check.hl { color: var(--highlight); background: var(--highlight-soft); }
 
   /* Section shared */
   section { padding: 76px 0; }
@@ -283,6 +305,7 @@
     border-radius: 999px;
     font-weight: 500;
   }
+  .pill.hl { background: var(--highlight-soft); border-color: rgba(244,104,15,0.3); color: var(--highlight); }
 
   /* CTA / Contato */
   .contact-section {
@@ -428,7 +451,7 @@
     <div class="hero-bg"></div>
     <div class="wrap">
       <span class="eyebrow">🚀 Estúdio de apps, IA e automação sob medida</span>
-      <h1>Sua empresa precisa de um app ou de automação. <span class="accent">Nós entregamos com ROI rápido.</span></h1>
+      <h1>Sua empresa precisa de um app ou de automação? <span class="accent">A gente entrega com ROI rápido.</span></h1>
       <p class="hero-sub">
         Transformamos a ideia do seu negócio em software funcionando de verdade — apps com chat e pagamento,
         agentes de IA que atendem e automações que eliminam trabalho manual. Sem enrolação, sem contrato eterno.
@@ -441,7 +464,7 @@
       </div>
       <div class="trust-row">
         <span><span class="dot"></span> Apps já em produção com usuários reais</span>
-        <span><span class="dot"></span> Agentes de IA e automação de processos</span>
+        <span><span class="dot hl"></span> Agentes de IA e automação de processos</span>
         <span><span class="dot"></span> Do MVP ao app publicado na loja</span>
       </div>
     </div>
@@ -461,7 +484,7 @@
           <p>Entendemos o problema real do seu negócio e definimos o escopo mínimo que já gera resultado.</p>
         </div>
         <div class="step">
-          <div class="step-num">02</div>
+          <div class="step-num hl">02</div>
           <h3>Proposta objetiva</h3>
           <p>Prazo, escopo e valor fechado — sem letra miúda, sem hora extra escondida.</p>
         </div>
@@ -482,7 +505,7 @@
   <section id="servicos">
     <div class="wrap">
       <div class="section-head">
-        <div class="section-tag">O que fazemos</div>
+        <div class="section-tag hl">O que fazemos</div>
         <h2>Apps, IA e automação — sob medida, não templates genéricos</h2>
         <p class="section-sub">Cada negócio tem um jeito próprio de operar — construímos em cima disso, não o contrário.</p>
       </div>
@@ -518,12 +541,12 @@
           <p>Depois do lançamento, seguimos evoluindo o produto junto com o crescimento do seu negócio.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🧠</div>
+          <div class="service-icon hl">🧠</div>
           <h3>IA generativa aplicada ao negócio</h3>
           <p>Copilotos e assistentes que usam os dados da sua empresa pra responder cliente, sugerir resposta ou gerar conteúdo — sempre com revisão antes de sair, sem risco de "robô solto".</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🤖</div>
+          <div class="service-icon hl">🤖</div>
           <h3>Agentes de IA</h3>
           <p>Agentes que executam tarefas reais (responder, consultar sistema, abrir chamado, qualificar lead) em vez de só conversar — conectados ao seu WhatsApp, CRM ou sistema interno.</p>
         </div>
@@ -551,7 +574,7 @@
               </div>
             </div>
             <div class="why-item">
-              <div class="why-check">✓</div>
+              <div class="why-check hl">✓</div>
               <div>
                 <h4>Foco em retorno, não em feature bonita</h4>
                 <p>Cada funcionalidade entra no escopo porque resolve um problema do seu negócio — não porque "fica legal ter".</p>
@@ -584,9 +607,9 @@
             <span class="pill">Chat em tempo real</span>
             <span class="pill">Integração de pagamento</span>
             <span class="pill">Publicação na Play Store / App Store</span>
-            <span class="pill">IA generativa (Claude / GPT)</span>
-            <span class="pill">Agentes de IA</span>
-            <span class="pill">Automação de processos (n8n)</span>
+            <span class="pill hl">IA generativa (Claude / GPT)</span>
+            <span class="pill hl">Agentes de IA</span>
+            <span class="pill hl">Automação de processos (n8n)</span>
           </div>
         </div>
       </div>
@@ -597,7 +620,7 @@
     <div class="wrap">
       <div class="contact-grid">
         <div class="contact-info">
-          <div class="section-tag">Vamos conversar</div>
+          <div class="section-tag hl">Vamos conversar</div>
           <h2>Conte sua ideia — a resposta é rápida</h2>
           <p>Preencha o formulário ou chame direto no WhatsApp. Sem compromisso, sem letra miúda.</p>
           <div class="contact-methods">
